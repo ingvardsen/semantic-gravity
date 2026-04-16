@@ -1,5 +1,5 @@
 {
-  "_comment": "Drop this into .claude/settings.json to install agent-readable hooks. Adjust the paths if your scripts live elsewhere.",
+  "_comment": "Drop this into .claude/settings.json to install semantic-gravity hooks. Adjust the paths if your scripts live elsewhere.",
   "hooks": {
     "PreToolUse": [
       {

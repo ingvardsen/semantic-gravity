@@ -1,4 +1,4 @@
-"""Shared helpers for agent-readable scripts.
+"""Shared helpers for semantic-gravity scripts.
 
 Handles config loading, path resolution, and common regex patterns.
 All scripts import from here rather than duplicating logic.
@@ -88,7 +88,7 @@ def load_config(path: Path | None = None) -> Config:
     config_path = path or find_config()
     if config_path is None:
         raise FileNotFoundError(
-            f"No {CONFIG_FILENAME} found. Run agent-readable in scaffold or "
+            f"No {CONFIG_FILENAME} found. Run semantic-gravity in scaffold or "
             f"audit mode with --init to create one."
         )
 

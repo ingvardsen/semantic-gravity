@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""agent-readable infer_conventions: draft a .structure.yaml from an existing codebase.
+"""semantic-gravity infer_conventions: draft a .structure.yaml from an existing codebase.
 
 Usage:
     python scripts/infer_conventions.py           # print suggested config to stdout

@@ -1,7 +1,7 @@
-# .structure.yaml — agent-readable config
+# .structure.yaml — semantic-gravity config
 #
 # This file defines what "fit structure" means for your project.
-# The agent-readable skill reads this at every invocation.
+# The semantic-gravity skill reads this at every invocation.
 
 # Project layout
 layout:

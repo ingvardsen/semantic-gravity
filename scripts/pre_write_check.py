@@ -99,7 +99,7 @@ def main() -> int:
         return 0
 
     # Exit code 2 blocks the tool call. The reason goes to stderr, which Claude sees.
-    print(f"agent-readable: {reason}", file=sys.stderr)
+    print(f"semantic-gravity: {reason}", file=sys.stderr)
     return 2
 
 

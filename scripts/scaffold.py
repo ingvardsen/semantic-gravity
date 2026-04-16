@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""agent-readable scaffold: create a new domain with all required files.
+"""semantic-gravity scaffold: create a new domain with all required files.
 
 Usage:
     python scripts/scaffold.py payment

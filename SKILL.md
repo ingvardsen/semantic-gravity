@@ -1,9 +1,9 @@
 ---
-name: agent-readable
-description: Scaffold, audit, and evolve Python project structure so it stays grep-friendly and fresh-session-readable. Use this skill whenever the user wants to create new modules or features, check how discoverable their codebase is, fix naming drift, find structural debt, score a project's "fitness" for AI agents, set up hooks to enforce conventions, or any time they mention project structure, directory layout, naming conventions, file placement, refactoring for clarity, domain-driven organization, or making a codebase "AI-friendly" / "agent-readable". Also trigger proactively when a user asks you to create new Python files or modules in a project that already has a `.structure.yaml` — consult the config first and follow its rules.
+name: semantic-gravity
+description: Scaffold, audit, and evolve Python project structure so it stays grep-friendly and fresh-session-readable. Use this skill whenever the user wants to create new modules or features, check how discoverable their codebase is, fix naming drift, find structural debt, score a project's "fitness" for AI agents, set up hooks to enforce conventions, or any time they mention project structure, directory layout, naming conventions, file placement, refactoring for clarity, domain-driven organization, or making a codebase "AI-friendly" / "semantic-gravity". Also trigger proactively when a user asks you to create new Python files or modules in a project that already has a `.structure.yaml` — consult the config first and follow its rules.
 ---
 
-# Agent Readable
+# Semantic Gravity
 
 Project structure is memory. Every session, a fresh Claude Code instance reconstructs understanding from the filesystem via Grep, Glob, and Read. Structures that are easy to re-discover are "fit"; structures that require extensive exploration waste tokens and produce wrong guesses. This skill keeps the codebase fit.
 

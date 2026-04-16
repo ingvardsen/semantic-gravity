@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""agent-readable audit: score the codebase and list violations.
+"""semantic-gravity audit: score the codebase and list violations.
 
 Usage:
     python scripts/audit.py                # human-readable output

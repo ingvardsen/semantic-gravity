@@ -1,6 +1,6 @@
 # Why Structure Matters for AI Agents
 
-Load this when a user asks why agent-readable exists, why the conventions matter, or seems skeptical about the value of structural audits. Don't paste this whole file into chat — paraphrase based on what the user needs.
+Load this when a user asks why semantic-gravity exists, why the conventions matter, or seems skeptical about the value of structural audits. Don't paste this whole file into chat — paraphrase based on what the user needs.
 
 ## The core problem
 
@@ -40,13 +40,13 @@ There's a deeper pattern here: every session restart is a test of the structure.
 
 This creates real evolutionary pressure. Structures that waste tokens get fixed because someone notices the waste. Structures that cause wrong placements get fixed because someone has to review and correct the output. Over time, the codebase evolves toward forms that are genuinely easier for agents to navigate.
 
-agent-readable makes this pressure explicit and automated. The fitness score measures how well the codebase survives a cold start. The hooks apply pressure continuously, not just at review time. The trend log makes evolution visible.
+semantic-gravity makes this pressure explicit and automated. The fitness score measures how well the codebase survives a cold start. The hooks apply pressure continuously, not just at review time. The trend log makes evolution visible.
 
 ## What it costs
 
 Some users will ask: isn't this over-engineering? Couldn't you just write cleaner code?
 
-The honest answer: yes, you could, and if you do, agent-readable's score will be high and it'll rarely block you. The tool doesn't impose structure on teams that already have it. It catches drift for teams that don't have time to police conventions manually — which is most teams working with AI agents that produce code faster than humans can review it.
+The honest answer: yes, you could, and if you do, semantic-gravity's score will be high and it'll rarely block you. The tool doesn't impose structure on teams that already have it. It catches drift for teams that don't have time to police conventions manually — which is most teams working with AI agents that produce code faster than humans can review it.
 
 The cost is:
 - One `.structure.yaml` file (~50 lines)
