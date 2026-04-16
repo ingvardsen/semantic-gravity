@@ -1,0 +1,113 @@
+# .structure.yaml — agent-readable config
+#
+# This file defines what "fit structure" means for your project.
+# The agent-readable skill reads this at every invocation.
+
+# Project layout
+layout:
+  # Root directory where domain modules live.
+  source_root: src
+
+  # Organization strategy. "domain" = src/<domain>/ holds all files for that domain.
+  # "layer" = src/services/, src/models/ etc. — NOT RECOMMENDED for agent-friendliness.
+  organization: domain
+
+  # Max directory depth from source_root. Deeper = harder to discover.
+  max_depth: 3
+
+  # Directories excluded from audits.
+  ignore:
+    - __pycache__
+    - .venv
+    - venv
+    - build
+    - dist
+    - "*.egg-info"
+
+# Naming conventions (Python / PEP 8 defaults)
+naming:
+  # File naming style for modules. Options: snake_case, kebab-case
+  file_case: snake_case
+
+  # Whether files must be prefixed with their domain name.
+  # E.g., src/payment/payment_service.py (true) vs src/payment/service.py (false)
+  domain_prefix: true
+
+  # Class naming style. Options: PascalCase, snake_case
+  class_case: PascalCase
+
+  # Function naming style. Options: snake_case, camelCase
+  function_case: snake_case
+
+  # Constant naming style. Options: SCREAMING_SNAKE_CASE, PascalCase
+  constant_case: SCREAMING_SNAKE_CASE
+
+  # If true, constants must also be domain-prefixed (PAYMENT_TIMEOUT_MS).
+  constant_domain_prefix: true
+
+# File roles — what files each domain is expected to have
+# A role is a suffix pattern. {domain} is replaced with the domain name.
+roles:
+  required:
+    - "{domain}_service.py"        # business logic
+    - "__init__.py"                # public API (re-exports)
+  recommended:
+    - "{domain}_types.py"          # dataclasses, TypedDicts, protocols
+    - "{domain}_test.py"           # co-located tests
+  optional:
+    - "{domain}_repository.py"     # data access
+    - "{domain}_handlers.py"       # HTTP / event handlers
+    - "{domain}_validators.py"     # input validation
+    - "{domain}_errors.py"         # domain-specific exceptions
+
+# Forbidden patterns — these lose fitness points
+forbidden:
+  # Generic file names that become dumping grounds
+  generic_filenames:
+    - utils.py
+    - helpers.py
+    - common.py
+    - misc.py
+    - stuff.py
+
+  # Deep nesting beyond max_depth is already penalized by layout.max_depth.
+
+  # Default exports — in Python this means re-exporting without explicit names
+  # from __init__.py using star imports. We prefer explicit re-exports.
+  star_imports_in_init: true
+
+# Error conventions
+errors:
+  # If true, error messages must include a domain-prefixed code like "PAY_001: ..."
+  require_domain_code: true
+
+  # The regex the skill uses to detect error codes. Uppercase letters, underscore,
+  # digits; the first segment is the domain abbreviation.
+  code_pattern: "[A-Z]{2,5}_\\d{3}"
+
+# Fitness scoring weights (used by audit.py)
+# Higher weight = bigger penalty when violated.
+scoring:
+  weights:
+    generic_file: 10            # each utils.py/helpers.py
+    missing_required_role: 8    # each domain missing a required file
+    naming_inconsistency: 6     # each file that doesn't match the convention
+    missing_recommended_role: 3 # each domain missing a recommended file (e.g., no test)
+    deep_nesting: 4             # each file beyond max_depth
+    star_import_in_init: 5      # each `from .x import *` in __init__.py
+    missing_error_code: 2       # each raise without a domain code (sampled, not every one)
+
+  # Score thresholds for human-readable grades
+  thresholds:
+    excellent: 90
+    good: 75
+    fair: 60
+    poor: 40
+    # Below poor = critical
+
+# Hooks — which lifecycle events to wire up when evolve mode installs automation
+hooks:
+  pre_write_check: true    # Block file writes that violate conventions
+  session_start_report: true  # Show fitness summary at session start
+  session_end_score: true  # Log score trend at session end
+  post_write_validate: false  # After every write, re-audit the touched file (slow)

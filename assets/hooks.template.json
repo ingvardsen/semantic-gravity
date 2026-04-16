@@ -1,0 +1,37 @@
+{
+  "_comment": "Drop this into .claude/settings.json to install agent-readable hooks. Adjust the paths if your scripts live elsewhere.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/pre_write_check.py"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/session_start_report.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/session_end_score.py",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}
