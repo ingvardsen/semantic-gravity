@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/pre_write_check.py"
+            "command": "python3 .claude/skills/semantic-gravity/scripts/pre_write_check.py"
           }
         ]
       }
@@ -17,7 +17,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/session_start_report.py"
+            "command": "python3 .claude/skills/semantic-gravity/scripts/session_start_report.py"
           }
         ]
       }
@@ -27,7 +27,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/session_end_score.py",
+            "command": "python3 .claude/skills/semantic-gravity/scripts/session_end_score.py",
             "async": true
           }
         ]
